@@ -5,8 +5,25 @@
   <input type="text" name="" placeholder="Search for a bot" (input)="filterBots($event)"/>
 </div>
 
-<div class="bot-selector" fxLayout="row wrap" fxLayoutGap="26px grid" fxFlexFill>
-  <ng-template ngFor [ngForOf]="stories$ | async" let-story>
-    <convl-story-list-item [story]="story"> </convl-story-list-item>
-  </ng-template>
+<div *ngIf="stories$ | async as stories"
+  class="bot-selector"
+  fxLayout="row wrap"
+  fxFlexFill
+>
+  <div *ngIf="stories.length > 0; else noBots" fxLayout="row wrap" fxFlex>
+    <div *ngFor="let story of stories" fxFlex="24">
+      <convl-story-list-item [story]="story"> </convl-story-list-item>
+    </div>
+  </div>
 </div>
+
+<ng-template #noBots>
+  <mat-card class="create-bot">
+    <mat-card-title><i class="fa fa-plus fa-5x" aria-hidden="true"></i>
+    </mat-card-title>
+      <mat-card-content>
+        <p>Create my first bot!</p>
+      </mat-card-content>
+  </mat-card>
+</ng-template>
+

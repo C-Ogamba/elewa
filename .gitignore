@@ -40,6 +40,9 @@ Thumbs.db
 
 .angular
 *.log
+
+#json files
+package-lock.json
 environment.ts
 environment.prod.ts
 apps/conv-lm-backend/src/environments/environment.ts
@@ -47,3 +50,4 @@ apps/conv-lm-backend/src/environments/environment.prod.ts
 
 *.icloud
 package-lock.json
+package.json
